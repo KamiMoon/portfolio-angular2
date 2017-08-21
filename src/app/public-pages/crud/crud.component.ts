@@ -21,7 +21,10 @@ export class CrudComponent implements OnInit {
     }
 
     getTasks() {
-        this.taskService.get().then(tasks => this.tasks = tasks);
+        this.taskService.get().then(tasks => {
+            this.tasks = tasks;
+            console.log(this.tasks)
+        });
     }
 
     ngOnInit(): void {
@@ -44,9 +47,7 @@ export class CrudComponent implements OnInit {
     }
 
     saveTask(task: Task) {
-        this.taskService.update(task).then(task => {
-
-        });
+        this.taskService.update(task);
     }
 
 }
