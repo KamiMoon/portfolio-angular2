@@ -1,1 +1,61 @@
-CRUD
+<div class="container">
+    <p>Current Tasks Board</p>
+    <p>Simple CRUD using the MEAN stack. Refresh the page. It is saved to the server running Node.js and MongoDB on Heroku.
+        UI is AngularJS.</p>
+    <ul>
+        <li><a href="https://github.com/KamiMoon/angular_full/blob/master/client/app/crud/crud.controller.js">AngularJS client</a>            using <a href="https://github.com/KamiMoon/angular_full/blob/master/client/app/task/task.service.js">$resource</a>
+        </li>
+        <li><a href="https://github.com/KamiMoon/angular_full/blob/master/server/api/task/task.controller.js">Node.js contoller using Express</a></li>
+        <li><a href="https://github.com/KamiMoon/angular_full/blob/master/server/api/task/task.model.js">MongoDB using Mongoose</a></li>
+    </ul>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Worked (hrs)</th>
+                <th>Estimated (hrs)</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasks">
+                <td>{{task.name}}</td>
+                <td>
+                    <input [(ngModel)]="task.hoursWorkedOn" type="number" ng-required="number" class="form-control" placeholder="Worked (hrs)">
+                </td>
+                <td>
+                    <input [(ngModel)]="task.estimatedHours" type="number" ng-required="number" class="form-control" placeholder="Worked (hrs)">
+                </td>
+                <td>
+                    <select [(ngModel)]="task.status">
+                        <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+                    </select>
+                </td>
+                <td>
+                    <button (click)="saveTask(task)" type="button" class="btn btn-success">Save</button>
+                    <button (click)="deleteTask(task)" type="button" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input [(ngModel)]="taskToAdd.name" type="text" class="form-control" placeholder="Name" required>
+                </td>
+                <td>
+                    <input [(ngModel)]="taskToAdd.hoursWorkedOn" type="number" ng-required="number" class="form-control" placeholder="Worked (hrs)">
+                </td>
+                <td>
+                    <input [(ngModel)]="taskToAdd.estimatedHours" type="number" ng-required="number" class="form-control" placeholder="Estimated (hrs)">
+                </td>
+                <td>
+                    <select [(ngModel)]="taskToAdd.status">
+                        <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+                    </select>
+                </td>
+                <td>
+                    <button (click)="addTask()" type="button" class="btn btn-primary">Add</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

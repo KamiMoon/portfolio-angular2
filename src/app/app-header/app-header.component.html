@@ -1,30 +1,5 @@
-<!-- <nav class="navbar navbar-toggleable-md">
-    <button class="navbar-toggler navbar-toggler-right" type="button" aria-controls="appNavigation" [attr.aria-expanded]="!isCollapsed"
-        aria-label="Toggle navigation" (click)="toggleMenu()">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    <a class="navbar-brand" href="#">My App</a>
-    <div class="collapse navbar-collapse" id="appNavigation" [ngbCollapse]="isCollapsed">
-        <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" routerLink="" routerLinkActive="active">Home</a>
-            <a class="nav-item nav-link" routerLink="/about" routerLinkActive="active">About</a>
-            <div class="nav-item dropdown" ngbDropdown>
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" ngbDropdownToggle>
-                  Dropdown
-              </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-                    <button class="dropdown-item">Action - 1</button>
-                    <button class="dropdown-item">Another Action</button>
-                    <button class="dropdown-item">Something else is here</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav> -->
-
-
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/home">erickizaki.com</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
         [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation" (click)="toggleMenu()">
           <span class="navbar-toggler-icon"></span>
@@ -32,27 +7,28 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" href="/blog">Blog</a>
             </li>
             <li class="nav-item dropdown" ngbDropdown>
-                <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle>Dropdown</a>
+                <a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle>Demos</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="/crud">CRUD</a>
+                    <a class="dropdown-item" href="https://dazzling-fire-6644.firebaseapp.com/presentations/#/start" target="_blank">WebGL Presentation</a>
+                    <a class="dropdown-item" href="https://dazzling-fire-6644.firebaseapp.com/threejs/" target="_blank">Three.js House</a>
+                    <!--TODO host this-->
+                    <!-- <a class="dropdown-item" href="threejslot/index.html" target="_blank">Three.js Lot</a> -->
+                    <a class="dropdown-item" href="presentations/css3transitions/index.html" target="_blank">CSS3 Transitions Presentation</a>
+                    <a class="dropdown-item" href="presentations/css3transitions/GraphicalTrain.html" target="_blank">CSS3 Transitions Demo</a>
+                    <a class="dropdown-item" href="presentations/IndexedDB/index.html" target="_blank">IndexedDB Presentation</a>
+                    <a class="dropdown-item" href="https://github.com/KamiMoon/TodoMVC" target="_blank">jQuery</a>
+                    <a class="dropdown-item" href="https://github.com/KamiMoon/websocketdemo" target="_blank">Java</a>
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <!-- <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form> -->
     </div>
 </nav>
