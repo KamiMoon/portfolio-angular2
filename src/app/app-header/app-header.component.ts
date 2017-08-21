@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
 })
 export class AppHeaderComponent {
 
+  isCollapsed = true;
+
+  constructor() { }
+
+  toggleMenu() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }

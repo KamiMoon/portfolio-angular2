@@ -22,6 +22,7 @@ import { BlogModule } from './blog/blog.module';
   ],
   imports: [
     BrowserModule,
+    NgbModule.forRoot(),
     PublicPagesModule,
     BlogModule,
     AppRoutingModule
