@@ -48,7 +48,6 @@ export class CrudComponent implements OnInit {
 
     saveTask(task: Task) {
         this.taskService.update(task).subscribe(() => {
-
         });
     }
 

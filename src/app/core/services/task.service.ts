@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
-//import 'rxjs/add/operator/toPromise';
+// import 'rxjs/add/operator/toPromise';
 
 import { Task } from '../models/task';
 import { Observable } from 'rxjs/Observable';
