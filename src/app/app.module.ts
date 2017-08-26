@@ -23,7 +23,7 @@ import { CoreModule } from './core/core.module';
   imports: [
     BrowserModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
 
     CoreModule,
     SharedModule,

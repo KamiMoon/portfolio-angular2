@@ -1,60 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
-
-import 'rxjs/add/operator/toPromise';
+import { Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+//import 'rxjs/add/operator/toPromise';
 
 import { Task } from '../models/task';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TaskService {
-    private headers = new Headers({ 'Content-Type': 'application/json' });
+    private heroesUrl = '/api/tasks';  // URL to web api
 
-    private heroesUrl = 'api/tasks';  // URL to web api
+    constructor(private http: HttpClient) { }
 
-    constructor(private http: Http) { }
-
-    get(): Promise<Task[]> {
-        return this.http.get(this.heroesUrl)
-            .toPromise()
-            .then(response => response.json().data as Task[])
-            .catch(this.handleError);
+    get(): Observable<Task[]> {
+        return this.http.get<Task[]>(this.heroesUrl);
     }
 
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+    getOne(id: String): Observable<Task> {
+        return this.http.get<Task>(`${this.heroesUrl}/${id}`);
     }
 
-    getOne(id: number): Promise<Task> {
-        const url = `${this.heroesUrl}/${id}`;
-        return this.http.get(url)
-            .toPromise()
-            .then(response => response.json().data as Task)
-            .catch(this.handleError);
+    update(task: Task): Observable<Task> {
+        return this.http.put<Task>(`${this.heroesUrl}/${task._id}`, task);
     }
 
-    update(task: Task): Promise<Task> {
-        const url = `${this.heroesUrl}/${task.id}`;
-        return this.http
-            .put(url, JSON.stringify(task), { headers: this.headers })
-            .toPromise()
-            .then(() => task)
-            .catch(this.handleError);
+    create(task: Task): Observable<Task> {
+        return this.http.post<Task>(this.heroesUrl, task);
     }
 
-    create(task: Task): Promise<Task> {
-        return this.http
-            .post(this.heroesUrl, JSON.stringify(task), { headers: this.headers })
-            .toPromise()
-            .then(res => res.json().data as Task)
-            .catch(this.handleError);
-    }
-
-    delete(id: number): Promise<void> {
-        const url = `${this.heroesUrl}/${id}`;
-        return this.http.delete(url, { headers: this.headers })
-            .toPromise()
-            .then(() => null)
-            .catch(this.handleError);
+    delete(id: String): Observable<Object> {
+        return this.http.delete(`${this.heroesUrl}/${id}`);
     }
 }

@@ -10,12 +10,13 @@ import { AppHeaderComponent } from './components/app-header/app-header.component
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { TaskService } from './services/task.service';
 
 @NgModule({
-    imports: [NgbModule.forRoot()],
+    imports: [HttpClientModule, NgbModule.forRoot()],
     exports: [AppHeaderComponent, AppFooterComponent],
     declarations: [AppHeaderComponent, AppFooterComponent],
     providers: [TaskService],

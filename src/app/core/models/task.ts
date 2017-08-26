@@ -1,5 +1,5 @@
 export class Task {
-    id;
+    _id: String;
     name: String;
     hoursWorkedOn: Number = 0;
     estimatedHours: Number = 0;

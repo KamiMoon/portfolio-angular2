@@ -21,7 +21,7 @@ export class CrudComponent implements OnInit {
     }
 
     getTasks() {
-        this.taskService.get().then(tasks => {
+        this.taskService.get().subscribe(tasks => {
             this.tasks = tasks;
             console.log(this.tasks);
         });
@@ -34,20 +34,22 @@ export class CrudComponent implements OnInit {
 
     addTask() {
         console.log(this.taskToAdd);
-        this.taskService.create(this.taskToAdd).then(task => {
+        this.taskService.create(this.taskToAdd).subscribe(task => {
             this.tasks.push(task);
             this.resetForm();
         });
     }
 
     deleteTask(task: Task) {
-        this.taskService.delete(task.id).then(() => {
-            this.tasks = this.tasks.filter(t => t.id !== task.id);
+        this.taskService.delete(task._id).subscribe(() => {
+            this.tasks = this.tasks.filter(t => t._id !== task._id);
         });
     }
 
     saveTask(task: Task) {
-        this.taskService.update(task);
+        this.taskService.update(task).subscribe(() => {
+
+        });
     }
 
 }
