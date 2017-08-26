@@ -1,4 +1,5 @@
 {
+  "tslint.run": "onSave",
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
