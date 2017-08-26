@@ -19,3 +19,10 @@ Install the TSLint extension
 https://medium.com/frontend-coach/7-must-have-visual-studio-code-extensions-for-angular-af9c476147fd
 
 AutoImport
+
+
+
+Code Coverage
+
+https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/code-coverage.md
+

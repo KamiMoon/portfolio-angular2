@@ -4,23 +4,25 @@ import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
-import { AppFooterComponent } from './app-footer.component';
+import { AppHeaderComponent } from './app-header.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-let comp: AppFooterComponent;
-let fixture: ComponentFixture<AppFooterComponent>;
+
+let comp: AppHeaderComponent;
+let fixture: ComponentFixture<AppHeaderComponent>;
 // let de;
 
-describe('AppFooterComponent', () => {
+describe('AppHeaderComponent', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
-            imports: [],
-            declarations: [AppFooterComponent]
+            imports: [NgbModule.forRoot()],
+            declarations: [AppHeaderComponent]
         }).compileComponents();
     });
 
     // synchronous beforeEach
     beforeEach(() => {
-        fixture = TestBed.createComponent(AppFooterComponent);
+        fixture = TestBed.createComponent(AppHeaderComponent);
 
         comp = fixture.componentInstance; // BannerComponent test instance
 
@@ -33,5 +35,11 @@ describe('AppFooterComponent', () => {
         expect(comp).toBeTruthy();
     }));
 
+    it('should have home link', async(() => {
+        const de = fixture.debugElement.query(By.css('.navbar-brand'));
+        const el = de.nativeElement;
+
+        expect(el.href).toContain('erickizaki.com');
+    }));
 });
 
