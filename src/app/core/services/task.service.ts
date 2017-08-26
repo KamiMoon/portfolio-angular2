@@ -7,6 +7,8 @@ import { Task } from '../models/task';
 
 @Injectable()
 export class TaskService {
+    private headers = new Headers({ 'Content-Type': 'application/json' });
+
     private heroesUrl = 'api/tasks';  // URL to web api
 
     constructor(private http: Http) { }
@@ -30,8 +32,6 @@ export class TaskService {
             .then(response => response.json().data as Task)
             .catch(this.handleError);
     }
-
-    private headers = new Headers({ 'Content-Type': 'application/json' });
 
     update(task: Task): Promise<Task> {
         const url = `${this.heroesUrl}/${task.id}`;

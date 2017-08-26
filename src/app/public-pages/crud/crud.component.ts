@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Task } from '../../models/task';
-import { TaskService } from '../../services/task.service';
+import { Task } from '../../core/models/task';
+import { TaskService } from '../../core/services/task.service';
 
 @Component({
-    selector: 'crud',
+    selector: 'app-crud',
     templateUrl: './crud.component.html'
 })
 export class CrudComponent implements OnInit {
@@ -23,7 +23,7 @@ export class CrudComponent implements OnInit {
     getTasks() {
         this.taskService.get().then(tasks => {
             this.tasks = tasks;
-            console.log(this.tasks)
+            console.log(this.tasks);
         });
     }
 

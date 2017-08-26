@@ -1,32 +1,51 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 
+import { By } from '@angular/platform-browser';
+import { Component, DebugElement } from '@angular/core';
 import { AppComponent } from './app.component';
+import { RouterLinkStubDirective } from '../testing/router-stubs';
+import { RouterOutletStubComponent } from '../testing/router-stubs';
+
+@Component({ selector: 'app-header', template: '' })
+class AppHeaderStubComponent { }
+
+@Component({ selector: 'app-footer', template: '' })
+class AppFooterStubComponent { }
+
+let comp: AppComponent;
+let fixture: ComponentFixture<AppComponent>;
+let app;
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent, AppHeaderStubComponent, AppFooterStubComponent, RouterLinkStubDirective,
+        RouterOutletStubComponent
       ],
-    }).compileComponents();
+    }).compileComponents().then(() => {
+      fixture = TestBed.createComponent(AppComponent);
+      comp = fixture.componentInstance;
+      app = fixture.debugElement.componentInstance;
+    });
   }));
 
   it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
-  it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
+  it('should should have a header', async(() => {
+    const de: DebugElement = fixture.debugElement.query(By.css('app-header'));
+    const el: HTMLElement = de.nativeElement;
+
+    expect(el).toBeTruthy();
   }));
 
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
+  it('should should have a footer', async(() => {
+    const de: DebugElement = fixture.debugElement.query(By.css('app-footer'));
+    const el: HTMLElement = de.nativeElement;
+
+    expect(el).toBeTruthy();
   }));
+
 });

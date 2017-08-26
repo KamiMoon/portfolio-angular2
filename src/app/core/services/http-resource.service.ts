@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/operator/toPromise';
 
-
 @Injectable()
 export class HttpResource {
     constructor(private http: HttpClient) { }

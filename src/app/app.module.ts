@@ -5,38 +5,33 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { AppHeaderComponent } from './app-header/app-header.component';
-import { AppFooterComponent } from './app-footer/app-footer.component';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppRoutingModule } from './app-routing.module';
 import { PublicPagesModule } from './public-pages/public-pages.module';
 import { BlogModule } from './blog/blog.module';
-
-
-import { TaskService } from './services/task.service';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AppHeaderComponent,
-    AppFooterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    NgbModule.forRoot(),
+
+    CoreModule,
+    SharedModule,
     PublicPagesModule,
     BlogModule,
     AppRoutingModule
   ],
-  providers: [TaskService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

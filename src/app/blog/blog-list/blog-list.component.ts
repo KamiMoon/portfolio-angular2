@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'blog-list',
+    selector: 'app-blog-list',
     templateUrl: './blog-list.component.html'
 })
 export class BlogListComponent {
