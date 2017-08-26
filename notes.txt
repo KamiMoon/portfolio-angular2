@@ -1,0 +1,18 @@
+
+
+Snippets
+
+Install this snippet extension of VS code
+
+https://marketplace.visualstudio.com/items?itemName=johnpapa.Angular2
+
+-From the command palette Ctrl-Shift-P (Windows, Linux) or Cmd-Shift-P (OSX)
+-Select Install Extension
+-Choose Angular v4 TypeScript Snippets (johnpapa)
+-Reload Visual Studio Code
+
+
+Install the TSLint extension
+-Make sure "tslint.run": "onSave", is in tslint.json to run on save
+
+
