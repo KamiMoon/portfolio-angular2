@@ -1,3 +1,4 @@
+import { AuthGuard } from './../core/services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -7,7 +8,7 @@ import { BlogAddEditComponent } from './blog-add-edit/blog-add-edit.component';
 
 const routes: Routes = [
     { path: 'blog', component: BlogListComponent },
-    { path: 'blog/:action/:id', component: BlogAddEditComponent },
+    { path: 'blog/:action/:id', component: BlogAddEditComponent, canActivate: [AuthGuard] },
     { path: 'blog/:id', component: BlogViewComponent }
 ];
 

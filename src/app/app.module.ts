@@ -1,3 +1,4 @@
+import { AccountModule } from './account/account.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
@@ -29,6 +30,7 @@ import { CoreModule } from './core/core.module';
     SharedModule,
     PublicPagesModule,
     BlogModule,
+    AccountModule,
     AppRoutingModule
   ],
   providers: [],
