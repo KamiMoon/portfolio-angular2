@@ -1,1 +1,63 @@
-Blog list
+<div id="blog-container" class="container-fluid">
+    <!-- <div class="row" *ngIf="Auth.hasRoles(['admin', 'blogger'])"> -->
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/blog/add/1" class="btn btn-default btn-lg" role="button">Add Post</a>
+            <br>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <article *ngFor="let post of posts">
+                <!-- <blog-post post="post"></blog-post> -->
+                <div class="media">
+                    <div class="media-left">
+                        <a href="/blog/{{post._id}}">
+                            <!-- <b-img public-id="{{post.photo}}" transformation="w_150,h_150,c_fit" alt="{{post.title}}" class="media-object"></b-img> -->
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <a href="/blog/{{post._id}}" class="media-heading post-preview-title">{{post.title}}</a>
+                        <ul class="blog-meta-list">
+                            <li itemprop="author" itemscope itemtype="https://schema.org/Person" *ngIf="post.user_name">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> By <span itemprop="name">{{post.user_name}}</span>
+                            </li>
+                            <li id="datePublished" class="date">
+                                <meta itemprop="datePublished" content="{{post.createdAt | date:'yyyy-MM-ddTHH:mm:ss.sssZ'}}" />
+                                <meta itemprop="dateModified" content="{{post.updatedAt | date:'yyyy-MM-ddTHH:mm:ss.sssZ'}}" />
+                                <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{post.createdAt | date:'MM/dd/yyyy'}}
+                            </li>
+                            <li class="comments" property="discussionUrl">
+                                <a href="/blog/{{post._id}}" class="btn btn-primary" type="button">
+                 Comments  
+                 <!-- <span class="badge disqus-comment-count" data-disqus-url="http://www.erickizaki.com/blog/{{post._id}}"></span> -->
+                </a>
+                            </li>
+                            <li class="tags" property="keywords" *ngIf="post.keywords.length">
+                                <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+                                <a *ngFor="let keyword of post.keywords" [class]="{'active': searchParams['keywords.text'] === keyword.text}" class="btn btn-default btn-sm keywords"
+                                    href="/blogKeyword/{{keyword.text}}">{{keyword.text}}</a>
+                            </li>
+                        </ul>
+                        <p class="post-preview-html">
+                            {{post.headingQuote}}
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </article>
+            <!-- https://angular-ui.github.io/bootstrap/#/pagination -->
+            <!-- <uib-pagination boundary-links="true" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                total-items="vm.searchParams.totalItems" ng-model="vm.searchParams.page" items-per-page="vm.searchParams.itemsPerPage"
+                ng-change="vm.pageChanged()" class="pagination-lg"></uib-pagination> -->
+        </div>
+        <div class="col-md-3">
+            <!-- <blog-social></blog-social>
+            <blog-follow></blog-follow>
+            <blog-keywords keyword="{{vm.searchParams['keywords.text']}}"></blog-keywords>
+            <blog-list></blog-list> -->
+        </div>
+    </div>
+</div>

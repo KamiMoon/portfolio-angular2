@@ -29,17 +29,18 @@ describe('AppHeaderComponent', () => {
         // query for the title <h1> by CSS element selector
         // de = fixture.debugElement.query(By.css('h1'));
         // el = de.nativeElement;
+        fixture.detectChanges();
     });
 
-    it('should create the component', async(() => {
+    it('should create the component', () => {
         expect(comp).toBeTruthy();
-    }));
+    });
 
-    it('should have home link', async(() => {
+    it('should have home link', () => {
         const de = fixture.debugElement.query(By.css('.navbar-brand'));
         const el = de.nativeElement;
 
-        expect(el.href).toContain('erickizaki.com');
-    }));
+        expect(el.href).toContain('/home');
+    });
 });
 
