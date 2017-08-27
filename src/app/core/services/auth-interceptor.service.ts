@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './auth.service';
@@ -9,7 +10,7 @@ import 'rxjs/add/operator/do';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    constructor(private cookieService: CookieService) { }
+    constructor(private cookieService: CookieService, private router: Router) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token = this.cookieService.get('token');
@@ -25,8 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
             if (event instanceof HttpResponse) {
                 if (event.status === 401) {
                     this.cookieService.delete('token');
-
-                    // TODO - go to login page
+                    this.router.navigate(['/login']);
                 }
             }
         });
