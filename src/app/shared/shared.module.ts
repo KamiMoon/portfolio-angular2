@@ -10,11 +10,17 @@
  * or in a particular feature module.
  */
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { FormsModule } from '@angular/forms';
+
+import { BootstrapTextComponent } from './components/bootstrap-text/bootstrap-text.component';
+
 
 @NgModule({
-    imports: [],
-    exports: [],
-    declarations: [],
+    imports: [CommonModule, FormsModule],
+    exports: [BootstrapTextComponent],
+    declarations: [BootstrapTextComponent],
     providers: [],
 })
 export class SharedModule { }

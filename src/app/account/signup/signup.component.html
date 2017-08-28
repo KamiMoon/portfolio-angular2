@@ -1,3 +1,68 @@
-<p>
-  signup works!
-</p>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form #form="ngForm" (ngSubmit)="register(form)" [ngClass]="{'was-validated': form.submitted}" novalidate>
+        <fieldset>
+          <legend>Register</legend>
+
+          <div class="form-group">
+            <label class="form-control-label" for="email">Email:</label>
+            <input type="email" name="email" id="email" [(ngModel)]="user.email" class="form-control" placeholder="Email" required="true">
+            <div *ngIf="form.invalid && form.submitted && form.controls.email.errors.required" class="invalid-feedback">Email is required</div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="password">Password:</label>
+            <input type="password" name="password" id="password" [(ngModel)]="user.password" class="form-control" placeholder="Password"
+              required>
+            <div *ngIf="form.invalid && form.submitted && form.controls.password.errors.required" class="invalid-feedback">Password is required</div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="confirmPassword">Confirm Password:</label>
+            <input type="confirmPassword" name="confirmPassword" id="confirmPassword" [(ngModel)]="user.confirmPassword" class="form-control"
+              placeholder="Confirmation Password" required>
+            <div *ngIf="form.invalid && form.submitted && form.controls.confirmPassword.errors.required" class="invalid-feedback">Confirmation Passsword is required</div>
+          </div>
+          <div class="form-group required">
+            <label for="UserConfirmPassword" class="col-lg-2 control-label">
+                            Agree to <a href="/terms" target="_blank">Terms and Conditions</a>
+                        </label>
+            <div class="col-lg-10" ng-class="{ 'has-success': form.terms.$valid && form.$submitted, 
+                                'has-error': (form.terms.$invalid && form.$submitted) || errors.terms }">
+              <input type="checkbox" required="true" [(ngModel)]="terms" name="terms" class="form-control" style="width: 32px" value="1">
+              <div *ngIf="form.invalid && form.submitted && form.controls.terms.errors.required" class="invalid-feedback">
+                Please accept the terms and conditions
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label"></label>
+            <div class="col-lg-10">
+              <div vc-recaptcha key="'6LdS5BMTAAAAACcWJA-nZhB34kFMfM5Rfyu6RrAV'"></div>
+            </div>
+          </div>
+        </fieldset>
+        <br>
+        <div align="center">
+          <button class="btn btn-lg btn-success" type="submit">
+                        Register
+                    </button>
+          <a style="margin-left: 15px" class="btn btn-lg btn-info" href="/login">Login</a>
+        </div>
+        <!-- <br>
+<hr>
+<div align="center">
+    <h5>OR</h5>
+</div>
+<div align="center">
+    <a class="btn btn-facebook btn-lg" href="" ng-click="loginOauth('facebook')">
+        <i class="fa fa-facebook"></i> Register with Facebook
+    </a>
+</div>
+ -->
+        <br>
+        <br>
+      </form>
+    </div>
+  </div>
+</div>

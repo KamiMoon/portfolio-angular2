@@ -1,0 +1,13 @@
+<div class="form-group">
+  <label class="form-control-label" for="{{label}}">{{label}}</label>
+  <input type="text" class="form-control" id="{{id}}" name="{{name}}" minlength="{{minlength}}" maxlength="{{maxlength}}" [(ngModel)]="value"
+    #title="ngModel" required="true" placeholder="Title" />
+  <ng-container *ngIf="title.invalid && (title.dirty || title.touched)">
+    <div *ngIf="title.errors.required" class="invalid-feedback">
+      Title is required.
+    </div>
+    <div *ngIf="title.errors.minlength" class="invalid-feedback">
+      Name must be at least 4 characters long.
+    </div>
+  </ng-container>
+</div>

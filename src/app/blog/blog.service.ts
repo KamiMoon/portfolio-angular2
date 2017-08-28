@@ -2,7 +2,7 @@ import { BlogSearchParams, BlogQueryResult, Keyword, Post } from './blog-model';
 import { Injectable } from '@angular/core';
 import { Headers } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
-// import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/toPromise';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -24,8 +24,8 @@ export class BlogService {
         return this.http.put<Post>(`${this.url}/${post._id}`, post);
     }
 
-    create(post: Post): Observable<Post> {
-        return this.http.post<Post>(this.url, post);
+    create(post: Post): Promise<Post> {
+        return this.http.post<Post>(this.url, post).toPromise();
     }
 
     delete(id: String): Observable<Object> {

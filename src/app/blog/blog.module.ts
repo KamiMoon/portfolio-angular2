@@ -10,12 +10,14 @@ import { BlogViewComponent } from './blog-view/blog-view.component';
 import { BlogAddEditComponent } from './blog-add-edit/blog-add-edit.component';
 
 import { PostComponent } from './post/post.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        SharedModule,
         BlogRoutingModule
     ],
     declarations: [

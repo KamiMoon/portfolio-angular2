@@ -20,13 +20,13 @@ import { AppHeaderComponent } from './components/app-header/app-header.component
 import { AppFooterComponent } from './components/app-footer/app-footer.component';
 
 import { TaskService } from './services/task.service';
-
+import { ValidationService } from './services/validation.service';
 
 @NgModule({
     imports: [HttpClientModule, NgbModule.forRoot()],
     exports: [AppHeaderComponent, AppFooterComponent],
     declarations: [AppHeaderComponent, AppFooterComponent],
-    providers: [TaskService, CookieService, UserService, AuthService, AuthGuard, {
+    providers: [TaskService, CookieService, UserService, AuthService, AuthGuard, ValidationService, {
         provide: HTTP_INTERCEPTORS,
         useClass: AuthInterceptor,
         multi: true,

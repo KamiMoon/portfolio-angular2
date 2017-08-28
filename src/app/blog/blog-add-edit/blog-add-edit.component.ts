@@ -1,3 +1,4 @@
+import { ValidationService } from './../../core/services/validation.service';
 import { BlogService } from './../blog.service';
 import { Post, BlogSearchParams, BlogQueryResult, PostKeyWord } from './../blog-model';
 import { Component, OnInit } from '@angular/core';
@@ -10,11 +11,13 @@ import { NgForm } from '@angular/forms';
 })
 export class BlogAddEditComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute, private blogService: BlogService) { }
+    constructor(private route: ActivatedRoute, private blogService: BlogService, private validationService: ValidationService) { }
 
     post: Post;
     keywordToAdd = this.createKeywordRow();
     action: String = 'add';
+
+    poop: String;
 
     ngOnInit(): void {
         this.action = this.route.snapshot.paramMap.get('action');
@@ -53,17 +56,20 @@ export class BlogAddEditComponent implements OnInit {
 
         console.log(form);
 
-        if (form.valid) {
-            if (this.action === 'edit') {
-                this.blogService.update(this.post).subscribe(post => {
-                    // TOOD routing, validation, error handling, feedback
-                });
-            } else {
-                this.blogService.create(this.post).subscribe(post => {
-                    // TOOD routing, validation, error handling, feedback
-                });
-            }
+        //if (form.valid) {
+        if (this.action === 'edit') {
+            this.blogService.update(this.post).subscribe(post => {
+                // TOOD routing, validation, error handling, feedback
+            });
+        } else {
+            this.blogService.create(this.post).then(post => {
+                // TOOD routing, validation, error handling, feedback
+            }).catch(err => {
+                console.log(err);
+                this.validationService.displayErrors(form, err);
+            });
         }
+        //}
 
     }
 

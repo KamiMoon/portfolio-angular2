@@ -31,9 +31,6 @@ export class LoginComponent implements OnInit {
           console.error(err);
         });
 
-
-      //subscribe calls it again!!!!!!!
-      //get rid of it!!!
     }
 
   }

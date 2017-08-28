@@ -1,7 +1,7 @@
 export class User {
     _id: String;
     stripeCustomerId: String;
-    roles: any[];
+    roles: any[] = null;
     name: String;
     email: String;
     phone: String;

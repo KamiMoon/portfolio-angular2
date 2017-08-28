@@ -16,23 +16,23 @@ export class UserService {
         return this.http.get<User>(`${this.url}/me`).toPromise();
     }
 
-    profile(id: String): Observable<User> {
-        return this.http.get<User>(`${this.url}/profile/${id}`);
+    profile(id: String): Promise<User> {
+        return this.http.get<User>(`${this.url}/profile/${id}`).toPromise();
     }
 
-    update(user: User): Observable<User> {
-        return this.http.put<User>(`${this.url}/${user._id}`, user);
+    update(user: User): Promise<User> {
+        return this.http.put<User>(`${this.url}/${user._id}`, user).toPromise();
     }
 
-    create(user: User): Observable<User> {
-        return this.http.post<User>(this.url, user);
+    create(user: User) {
+        return this.http.post(this.url, user).toPromise();
     }
 
-    delete(id: String): Observable<Object> {
-        return this.http.delete(`${this.url}/${id}`);
+    delete(id: String): Promise<Object> {
+        return this.http.delete(`${this.url}/${id}`).toPromise();
     }
 
-    changePassword(id: String, oldPassword: String, newPassword: String): Observable<String> {
-        return this.http.put<String>(`${this.url}/${id}/password`, { oldPassword: oldPassword, newPassword: newPassword });
+    changePassword(id: String, oldPassword: String, newPassword: String): Promise<String> {
+        return this.http.put<String>(`${this.url}/${id}/password`, { oldPassword: oldPassword, newPassword: newPassword }).toPromise();
     }
 }

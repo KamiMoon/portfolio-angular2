@@ -6,10 +6,27 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="title">Title:</label>
-                    <input type="text" class="form-control" id="title" name="title" [(ngModel)]="post.title" required="true" placeholder="Title"
-                    />
-                    <div *ngIf="form.invalid && form.submitted && form.controls.title.errors.required" class="invalid-feedback">Title is required</div>
+                    <input type="text" class="form-control" id="title" name="title" minlength="4" [(ngModel)]="post.title" #title="ngModel" required="true"
+                        placeholder="Title" />
+                    <div *ngIf="title.invalid && (title.dirty || title.touched || form.submitted)" class="alert alert-danger">
+                        <!-- <div *ngIf="title.errors.required">
+                            Title is required.
+                        </div> -->
+                        <div *ngIf="title.errors.minlength">
+                            Name must be at least 4 characters long.
+                        </div>
+
+                        <ng-container *ngIf="form.submitted && form.controls.title.serverErrors">
+                            <div *ngFor="let errorMessage of form.controls.title.serverErrors">{{errorMessage}}</div>
+                        </ng-container>
+                    </div>
                 </div>
+
+                <!-- <bootstrap-text id="poo" name="poop" placeholder="Kind of Poop" label="Poop" [(ngModel)]="poop"></bootstrap-text> -->
+
+                <!-- <bootstrap-text name="poop" id="poop" label="Poop" placeholder="Poop" [(ngModel)]="poop"></bootstrap-text> -->
+
+                {{form.value | json}}
 
                 <!-- <b-input type="file" multiple="true" model="vm.post.photo" transformation="w_100,h_100,c_fit"></b-input> -->
                 <div class="form-group">
@@ -44,7 +61,7 @@
                 <div class="form-group">
                     <label class="form-control-label" for="headingQuote">Post Summary:</label>
                     <textarea class="form-control" id="postSummary" id="headingQuote" name="headingQuote" [(ngModel)]="post.headingQuote" required></textarea>
-                    <div *ngIf="form.invalid && form.submitted && form.controls.headingQuote.errors.required" class="invalid-feedback">Post Summary is required</div>
+                    <div *ngIf="form.invalid && form.submitted && form.controls && form.controls.headingQuote.errors.required" class="invalid-feedback">Post Summary is required</div>
                 </div>
 
                 <!-- <div class="form-group">
